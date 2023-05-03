@@ -8,14 +8,22 @@
 
 # my_age = 88
 
+#2.2
 # Data types
-a = 654    #number
-print(a)
-my_name = "nico"    #text
-b = "1231231234"
-print(my_name)
+# a = 654    #number
+# print(a)
+# my_name = "nico"    #text
+# b = "1231231234"
+# print(my_name)
 
-#boolean - True/False
-#대문자 필수
-c = True  #1, ON
-d = False #0, OFF
+# #boolean - True/False
+# #대문자 필수
+# c = True  #1, ON
+# d = False #0, OFF
+
+#2.3
+my_name = "hoon"
+age = 27
+dead = False
+print("Hello my name is", my_name)
+print("and I'm", age, "years old")
