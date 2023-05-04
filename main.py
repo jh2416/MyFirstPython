@@ -80,3 +80,11 @@ def say_hello(user_name, user_age):
 say_hello("nico", 12)
 
 print(1,2,3,4,5,6,7,8,9)
+
+
+#2.8 Recap
+def tax_calculator(money, tax_rate):
+  print(money * tax_rate)
+
+print("your tax: ")
+tax_calculator(10000000000, 0.1)
