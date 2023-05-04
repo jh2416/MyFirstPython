@@ -57,3 +57,15 @@ def say_bye():
   say_hello()
 
 say_hello()
+
+#2.6 Parameters
+#다양한 출력을 원함 -> 데이터가 들어갈 공간(placeholder) 제공 필요
+def say_hello(user_name):  #user_name : parameter
+  print("hello", user_name, "how r u?")
+
+#user_name : parameter
+#nico, matt, lynn, lewis : arguments
+say_hello("nico")
+say_hello("matt")
+say_hello("lynn")
+say_hello("lewis")
