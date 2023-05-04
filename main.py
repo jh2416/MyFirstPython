@@ -69,3 +69,14 @@ say_hello("nico")
 say_hello("matt")
 say_hello("lynn")
 say_hello("lewis")
+
+
+#2.7 Multiple Parameters
+def say_hello(user_name, user_age):  
+  print("hello", user_name)
+  print("you are", user_age, "years old")
+
+#say_hello("nico")    #error! - missing 'user_age' argument
+say_hello("nico", 12)
+
+print(1,2,3,4,5,6,7,8,9)
