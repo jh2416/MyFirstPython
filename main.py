@@ -125,3 +125,19 @@ minus(3,1)      #2
 multiply(4,5)   #20
 divide(6,2)     #3
 power_of(4,3)   #64
+
+
+#2.10 Return Values
+#출력 + 함수로부터 값 받기
+def tax_calculator(money):
+  #print(money * 0.35)
+  return money * 0.35
+
+#tax_calculator(1500000000)
+
+def pay_tax(tax):
+  print("Thank you for paying", tax)
+
+to_pay = tax_calculator(150000000)  #money입력
+#tax_calculator에서 세금 얼마인지 받아옴
+pay_tax(to_pay)                     #to_pay = tax
