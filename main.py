@@ -88,3 +88,40 @@ def tax_calculator(money, tax_rate):
 
 print("your tax: ")
 tax_calculator(10000000000, 0.1)
+
+
+#2.9 Default Parameters
+# def say_hello(user_name):
+#   print("hello", user_name, "\b!")
+
+# say_hello("nico")
+# say_hello()  #error!
+
+#익명의 유저에게 hello를 하려면? user_name="anonymous"와 같은 방식으로 작성해주면 됨
+def say_hello(user_name="anonymous"):
+  print("hello", user_name,"\b!")
+
+say_hello("nico")
+say_hello()    #hello anonymous! 출력
+
+#challenge
+def plus(a=0, b=0):
+  print(a + b)
+
+def minus(a=0, b=0):
+  print(a - b)
+
+def multiply(a=0, b=0):
+  print(a * b)
+
+def divide(a=0, b=1):
+  print(a / b)
+
+def power_of(a=0, b=1):
+  print(a**b)
+
+plus(1,2)       #3
+minus(3,1)      #2
+multiply(4,5)   #20
+divide(6,2)     #3
+power_of(4,3)   #64
