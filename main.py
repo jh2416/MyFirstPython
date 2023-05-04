@@ -22,8 +22,25 @@
 # d = False #0, OFF
 
 #2.3
-my_name = "hoon"
-age = 27
-dead = False
-print("Hello my name is", my_name)
-print("and I'm", age, "years old")
+# my_name = "hoon"
+# age = 27
+# dead = False
+# print("Hello my name is", my_name)
+# print("and I'm", age, "years old")
+
+#2.4
+#function : 코드 조각 같은것, 반복해서 사용가능, print()도 function
+print("hello")
+print(True)
+print(12)
+print("hello", True, 12)
+
+name = "nico"
+#make function
+def say_hello():
+  print("hello how r u?")
+  #say_hello를 호출할때마다 hello how r u?를 출력해라
+
+say_hello()
+say_hello()
+say_hello()
