@@ -141,3 +141,32 @@ def pay_tax(tax):
 to_pay = tax_calculator(150000000)  #money입력
 #tax_calculator에서 세금 얼마인지 받아옴
 pay_tax(to_pay)                     #to_pay = tax
+
+#2.11 Return Recap
+my_name = "nico"
+my_age = 12
+my_color_eyes = "brown"
+#위 3개를 한꺼번에 string으로 만들고 싶어
+#f : format
+print(f"Hello I'm {my_name}, I am {my_age} years old, and {my_color_eyes} is my eye color.")
+
+#juicemaker
+def make_juice(fruit):
+  return f"{fruit} + 🥤"
+  #return 이후의 코드는 실행하지 않음
+  print("blablablablablabla")
+
+def add_ice(juice):
+  return f"{juice} + 🧊"
+
+def add_sugar(iced_juice):
+  return f"{iced_juice} + 🍬"
+
+juice = make_juice("🍎")
+#print(juice)
+cold_juice = add_ice(juice)
+#print(cold_juice)
+perfect_juice = add_sugar(cold_juice)
+
+
+print(perfect_juice)
