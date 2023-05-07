@@ -170,3 +170,19 @@ perfect_juice = add_sugar(cold_juice)
 
 
 print(perfect_juice)
+
+#3.0 If
+#function처럼 indentation, :
+#기본 틀
+#if condition:
+#  "write the code to run"
+
+#변수- =, 등호- ==, 부등호- <=, >=
+a = 5
+
+if a == 5:
+  print("True!")
+
+b = "nico"
+if b == "nico":
+  print("True!")
