@@ -186,3 +186,21 @@ if a == 5:
 b = "nico"
 if b == "nico":
   print("True!")
+
+
+#3.1 Else & Elif
+password_correct =False 
+
+if password_correct:
+  print("Here is yout money")
+else:
+  print("Incorrect password!")
+
+winner = 10
+
+if winner >10:
+  print("Winner is greater than 10")
+elif winner <10:
+  print("Winner is less than 10")
+else:
+  print("Winner is 10")
