@@ -204,3 +204,20 @@ elif winner <10:
   print("Winner is less than 10")
 else:
   print("Winner is 10")
+
+
+#3.2 Recap
+password_correct =False
+
+winner = 100
+
+if winner <= 10:#if만 쓰는것도 가능
+  print("If")
+elif winner <= 25: #또 다른 조건도 확인가능
+  print("Elif")
+elif winner == 0:
+  print("Elif2")
+elif winner == 50: #위에서 true가 나오면 그 밑은 무시
+  print("Elif3")
+else: #위 코드에 대한 대안
+  print("Else")
