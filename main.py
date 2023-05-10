@@ -221,3 +221,32 @@ elif winner == 50: #위에서 true가 나오면 그 밑은 무시
   print("Elif3")
 else: #위 코드에 대한 대안
   print("Else")
+
+
+#3.3 And & Or
+age = int(input("How old are you?"))
+
+print(type(age)) #age의 자료형이 무엇인지 출력
+print(age)
+
+if age < 18:
+  print("You can't drink.")
+elif age>=18 and age <35:
+  print("You drink beer! ")
+elif age == 60 or age == 70:
+  print("Birthday party!")
+else: 
+  print("Go ahead!")
+
+
+#and
+True and True == True
+False and True == False
+True and False == False
+False and False == False
+
+#or
+True or True == True
+True or False == True
+False or True == True
+False or False == False
