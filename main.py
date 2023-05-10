@@ -245,7 +245,7 @@ False and True == False
 True and False == False
 False and False == False
 
-#or
+#or 
 True or True == True
 True or False == True
 False or True == True
