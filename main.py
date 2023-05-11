@@ -266,3 +266,25 @@ elif user_choice > pc_choice:
   print("Lower! PC chose ", pc_choice)
 elif user_choice < pc_choice:
   print("Higher! PC chose ", pc_choice)
+
+
+"""블로그에 추가
+한줄 주석문 : #
+덩어리 주석문 : """ """
+"""
+
+#3.5 While
+
+#if문은 한번만 실행
+if True:
+  print("Hi im True")
+
+#while은 if와 같지만 멈추지 않음, 멈추려면 False가 돼야함
+"""while True:
+  print("Hi im True")"""
+
+distance = 0
+
+while distance < 20:
+  print("I'm running:", distance, "km")
+  distance = distance + 1
