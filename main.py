@@ -307,3 +307,6 @@ while playing:
     print("Lower!")
   elif user_choice < pc_choice:
     print("Higher!")
+
+#3.7 Recap
+#built-in function : int, input, print같은 언제든 쓸 수 있는 함수
