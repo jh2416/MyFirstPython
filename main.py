@@ -250,3 +250,19 @@ True or True == True
 True or False == True
 False or True == True
 False or False == False
+
+
+#3.4 Python Standard Library
+#Python Casino
+from random import randint  #'randint' func from 'random' module
+#import random만 하고 밑에서 pc_choice = random.randint(1,50) 로 쓰는것도 가능
+user_choice = int(input("Choose number."))
+pc_choice = randint(1,50)
+
+
+if user_choice == pc_choice:
+  print("You won!")
+elif user_choice > pc_choice:
+  print("Lower! PC chose ", pc_choice)
+elif user_choice < pc_choice:
+  print("Higher! PC chose ", pc_choice)
