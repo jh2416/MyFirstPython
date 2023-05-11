@@ -21,6 +21,7 @@ def get_yearly_expenses(monthly_expenses):
 profit = get_yearly_revenue(monthly_revenue) - get_yearly_expenses(monthly_expenses)
 print(profit)
 
+#여기 틀림, profit * tax_amount를 return받아야하는데 왜이렇게 했지
 def get_tax_amount(profit):
   if profit > 100000:
     tax_amount = 0.25
