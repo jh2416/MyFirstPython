@@ -310,3 +310,65 @@ while playing:
 
 #3.7 Recap
 #built-in function : int, input, print같은 언제든 쓸 수 있는 함수
+
+
+#4.0 Methods
+#data structure
+mon = "Mon"
+tue = "Tue"
+wed = "Wed"
+thur = "Thur"
+fri = "Fri"
+#...얘네들은 list가 아님, list는 한개의 variable에 모두 저장되어야 함
+
+#days_of_week = "Mon,Tue,Wed,Thur,Fri"
+#print(days_of_week)
+#이렇게 하면 list가 되긴 하지만 특정 요일을 고르는 기능을 실행할 수 없음
+days_of_week = ["Mon","Tue","Wed","Thur","Fri"]
+print(days_of_week)
+
+#Method설명
+# .뒤에 오는 것(function)들은 name이라는 variable에 결합(bounded)되어있음, string, number같은 것들에 bounded된 function들을 method라고 함:쉽게 말하면 데이터 뒤에 결합/연결된 function, 데이터를 변환시켜줄 수 있음
+# print같이 혼자 아무데서나 아무렇게 쓸 수 있는 것들은 unbounded function
+name = "nico"
+print(name.upper()) #대문자(uppercase)로 변환
+print(name.capitalize()) #맨 앞만 대문자로
+print(name.startswith("n")) #n으로 시작하는지 확인
+print(name.replace("o","🍔"))
+#공식문서에서 다양한 method 확인 가능
+
+
+#4.1 Lists
+#Data Modifying이 용이해짐, Method사용이 가능해져서 생산적임, Data structures로 작업을 하기 용이
+#하나의 list에 숫자, 문자, boolean, list모두 섞어서 사용할 수 있음
+#뒤에서부터 접근도 가능함 : 가장 마지막 item부터 -1, -2, -3, ......
+whatever = [1,2,3,True,False,"hi","hello",[0,1,2,[True,False]]]
+days_of_week = ["Mon","Tue","Wed","Thur","Fri"]
+
+print(days_of_week.count("Wed"))
+
+days_of_week.append("Sat")
+days_of_week.append("Sun")
+print(days_of_week)
+
+#특정 item접근(0부터 시작)
+print(days_of_week[0])
+
+days_of_week.remove("Wed")
+
+days_of_week.reverse()  #순서 뒤집어서 출력
+print(days_of_week)
+
+print(days_of_week.clear()) #None출력, print 하기전에 실행 후 print 하면 []출력
+
+days_of_week.reverse()  #[]출력, 함수 내에서 실행된 clear도 후에 영향을 계속 줌
+print(days_of_week)
+
+
+#4.2 Tuples
+#Lists
+days_list = ["Mon","Tue","Wed"]
+#Tuples - 차이점 : 불변(immutable)!, method중 count, index만 사용가능, 만들어진 이후 변경 불가
+#접근은 list와 같은 방식으로([]) 가능
+days = ("Mon","Tue","Wed")
+print(days[-2])
