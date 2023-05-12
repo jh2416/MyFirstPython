@@ -15,3 +15,29 @@ while playing:
     print("Result:", a / b)
   elif 'exit':
     playing = False
+
+
+#4.0 Methods
+#data structure
+mon = "Mon"
+tue = "Tue"
+wed = "Wed"
+thur = "Thur"
+fri = "Fri"
+#...얘네들은 list가 아님, list는 한개의 variable에 모두 저장되어야 함
+
+#days_of_week = "Mon,Tue,Wed,Thur,Fri"
+#print(days_of_week)
+#이렇게 하면 list가 되긴 하지만 특정 요일을 고르는 기능을 실행할 수 없음
+days_of_week = ["Mon","Tue","Wed","Thur","Fri"]
+print(days_of_week)
+
+#Method설명
+# .뒤에 오는 것(function)들은 name이라는 variable에 결합(bounded)되어있음, string, number같은 것들에 bounded된 function들을 method라고 함:쉽게 말하면 데이터 뒤에 결합/연결된 function, 데이터를 변환시켜줄 수 있음
+# print같이 혼자 아무데서나 아무렇게 쓸 수 있는 것들은 unbounded function
+name = "nico"
+print(name.upper()) #대문자(uppercase)로 변환
+print(name.capitalize()) #맨 앞만 대문자로
+print(name.startswith("n")) #n으로 시작하는지 확인
+print(name.replace("o","🍔"))
+#공식문서에서 다양한 method 확인 가능
