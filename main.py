@@ -397,3 +397,36 @@ print(player)
 player['fav_food'].append("🍜") #dict안의 list에 항목 추가
 print(player.get('fav_food'))
 print(player['fav_food'])
+
+
+#4.4 Recap
+print("nico".endswith("a"))
+
+numbers = [5,2,1,3,4,6,8,"True",True,12]
+numbers.append(["🍔","🍟"])
+numbers.append("🍕")
+
+print(numbers[-1])
+
+nums = (1,2,3,4,5,True,"xxxxx")
+print(nums[4])
+
+player = {
+  'name':'nico',
+  'age':12,
+  "alive":True,
+  "fav_food":("🍔","🍟"),
+  'friend':{
+    'name':'lynn',
+    'fav_food':["🍮"]
+  }
+}
+
+print(player["friend"]["fav_food"])
+print(player["fav_food"][1])
+print(player["fav_food"][-2])
+
+player['fav_food']='🍅'
+player.pop('alive')
+player['friend']['fav_food'].append('🍌')
+print(player)
