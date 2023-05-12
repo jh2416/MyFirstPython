@@ -372,3 +372,28 @@ days_list = ["Mon","Tue","Wed"]
 #접근은 list와 같은 방식으로([]) 가능
 days = ("Mon","Tue","Wed")
 print(days[-2])
+
+
+#4.3 Dicts
+#key value fair
+player = {
+  'name': 'nico',  #string key-value
+  'age': 12,       #int key-value
+  'alive': True,   #boolean key-value
+  'fav_food': ['🍕', '🍔']
+}
+print(player.get('name'))  #key로 접근
+print(player.get('fav_food'))
+#dictionary는 많은 속성을 가진 데이터를 만들때 사용
+print(player['fav_food'])
+
+print(player)   
+player.pop('age')  #key가 age인 데이터를 지움
+print(player)
+
+#데이터 추가
+player['xp'] = 1500 #key - xp, value - 1500
+print(player)
+player['fav_food'].append("🍜") #dict안의 list에 항목 추가
+print(player.get('fav_food'))
+print(player['fav_food'])
