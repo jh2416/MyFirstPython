@@ -491,3 +491,39 @@ for website in websites:
   if not website.startswith("https://"):
     website = f"https://{website}" 
   print(website) 
+
+
+#4.8 Status Codes
+#get : response를 return
+#response : 웹사이트의 응답
+from requests import get #get website
+
+websites = (  
+  "google.com",
+  "airbnb.com",
+  "https://twitter.com",
+  "facebook.com",
+  "https://tiktok.com"
+)
+
+results = {}
+
+for website in websites: 
+  if not website.startswith("https://"):
+    website = f"https://{website}" 
+  response = get(website)
+  #print(response) 
+  # <Response [200]> 5줄 출력됨 -> 웹사이트가 성공적으로 응답했다는 의미; 
+  #200 : OK 리소스를 불러와서 메시지 바디에 전송되었습니다.
+  print(response.status_code)
+  if response.status_code == 200:
+    results[website] = "OK" #위에 dict에 key생성
+    print(f"{website} is OK")
+  else:
+    print(f"{website} is not OK")
+    results[website] = "FAILED" #위에 dict에 key생성
+
+print(results)
+
+
+
