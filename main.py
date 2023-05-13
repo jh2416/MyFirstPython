@@ -430,3 +430,19 @@ player['fav_food']='🍅'
 player.pop('alive')
 player['friend']['fav_food'].append('🍌')
 print(player)
+
+
+#4.5 For Loops
+websites = (  #tuple, list여도 밑에 for문 가능
+  "google.com",
+  "airbnb.com",
+  "twitter.com",
+  "facebook.com",
+  "tiktok.com"
+)
+
+for potato in websites: #보통 for website in websites 같은 식으로 사용하면 표현하기 쉬움
+  print("hello")  
+  #각각의 웹사이트에 대해 print실행
+  #현재 처리중인 item이 뭔지 알 수 없음
+  print("potato is equals to", potato)
