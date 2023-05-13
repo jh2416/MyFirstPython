@@ -446,3 +446,27 @@ for potato in websites: #보통 for website in websites 같은 식으로 사용�
   #각각의 웹사이트에 대해 print실행
   #현재 처리중인 item이 뭔지 알 수 없음
   print("potato is equals to", potato)
+
+
+#4.6 URL Formatting
+websites = (  
+  "google.com",
+  "airbnb.com",
+  "https://twitter.com",
+  "facebook.com",
+  "https://tiktok.com"
+)
+
+for website in websites: 
+  # if website.startswith("https://"):
+  #   print("good to go")
+  # else:
+  #   print("we have to fix it")
+  if not website.startswith("https://"):
+    print("we have to fix it")
+    # 위랑 같은 코드
+    # if website.startswith("https://") == False:
+    #   print("we have to fix it")
+    website = f"https://{website}" #string 추가
+  print(website) # print all website
+  
