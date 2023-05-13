@@ -470,3 +470,24 @@ for website in websites:
     website = f"https://{website}" #string 추가
   print(website) # print all website
   
+
+#4.7 Requests
+# pypi.org : standard library말고 다른 사람들이 만든 library쓰고싶을 때, request도 여기에 있음
+#request : 내 브라우저가 google 서버에 request를 보내고 google서버는 나한테 웹사이트를 보내줌
+# 컴퓨터에 설치하려면 $ python -m pip install requests
+# replit에서 설치할때는 package배너에서 검색
+
+from requests import get #get website
+
+websites = (  
+  "google.com",
+  "airbnb.com",
+  "https://twitter.com",
+  "facebook.com",
+  "https://tiktok.com"
+)
+
+for website in websites: 
+  if not website.startswith("https://"):
+    website = f"https://{website}" 
+  print(website) 
