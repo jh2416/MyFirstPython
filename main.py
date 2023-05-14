@@ -557,3 +557,26 @@ for website in websites:
     results[website] = "1xx / informational response"
   
 print(results)
+
+
+#5.2 Installation
+#모든 웹사이트가 스크래핑이 가능한건 아님
+#데이터 추출해가는 걸 원치 않는 웹사이트들이 있음 ex)코드인증, 봇 방지 프로그램 등으로 막음
+#이용약관에 명시하는 웹사이트들도 있음
+
+#5.3 Initial Request
+#weworkremotely.com 스크래핑
+#url이 제일 중요
+from requests import get
+
+base_url = "https://weworkremotely.com/remote-jobs/search?term="
+search_term = "python"
+
+#weworkremotely.com에서 python으로 검색한 페이지 접근
+response = get(f"{base_url}{search_term}")
+
+if response.status_code !== 200:
+  print("Can't request website")
+#print(response) #확인
+else:
+  print(response.text) #HTML코드 출력
