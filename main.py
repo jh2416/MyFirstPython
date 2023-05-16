@@ -638,3 +638,40 @@ else:
       print("/////////////") #seperator
     #li"view-all" : 버튼, 제외돼도 됨 -> line19
    
+
+#5.7 Job Extraction
+#링크, 회사이름, job title, position, region등 중요한 정보만 빼와야 편함
+from requests import get
+from bs4 import BeautifulSoup
+
+base_url = "https://weworkremotely.com/remote-jobs/search?term="
+search_term = "python"
+
+response = get(f"{base_url}{search_term}")
+
+if response.status_code != 200:
+  print("Can't request website")
+else:
+  soup = BeautifulSoup(response.text, "html.parser")
+  jobs = soup.find_all('section', class_="jobs")
+  #print(len(jobs)) 
+  for job_section in jobs:
+    job_posts = job_section.find_all("li")
+    job_posts.pop(-1) 
+    for post in job_posts:
+      anchors = post.find_all("a")
+      anchor = anchors[1]
+      link = anchor['href']
+      #print(anchor['href'])#link만 가져옴
+      company, kind, region = anchor.find_all('span', class_="company")
+      #print(company, kind, region)
+      title = anchor.find('span', class_="title")
+      print(company, kind, region, title)
+      print("//////////////////")
+      print("//////////////////")
+    
+
+"""python에서 object의 list를 가지고 있고 list의 길이를 안다면 list에서 object를 가져오는 쉬운 코드가 있음: 
+list_of_numbers : list의 각 요소를 변수로 만들어줄 수 있음
+ex) first, second, third = list_of_numbers
+"""
