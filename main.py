@@ -601,3 +601,13 @@ else:
   jobs = soup.find_all('section', class_="jobs")
 #response.text : html text,
 #"html.parser" : beautifulsoup한테 html을 보내준다고 말해주는거
+
+
+#5.5 Keyword Arguments
+def say_hello(name, age):
+  print(f"Hello {name}, you are {age} years old.")
+
+say_hello("nico", 12)
+say_hello(age=12, name="nico")
+
+#soup.find_all에서 class_를 쓰는 이유: class는 이미 파이썬에서 쓰고있는 Keyword이기 때문에 _를 붙여줌
