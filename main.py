@@ -675,3 +675,48 @@ else:
 list_of_numbers : list의 각 요소를 변수로 만들어줄 수 있음
 ex) first, second, third = list_of_numbers
 """
+
+
+#5.8 Saving Results
+#span에서 text 추출 - .string method사용 - 텍스트만 추출
+from requests import get
+from bs4 import BeautifulSoup
+
+base_url = "https://weworkremotely.com/remote-jobs/search?term="
+search_term = "python"#python대신 java, react등 원하는 검색어로 검색 가능
+#java로 검색할때 javascript도 검색되는데 javascript를 제한 할 방법은 있을까?
+
+response = get(f"{base_url}{search_term}")
+
+if response.status_code != 200:
+  print("Can't request website")
+else:
+  result = []
+  soup = BeautifulSoup(response.text, "html.parser")
+  jobs = soup.find_all('section', class_="jobs")
+  #print(len(jobs)) 
+  for job_section in jobs:
+    job_posts = job_section.find_all("li")
+    job_posts.pop(-1) 
+    for post in job_posts:
+      anchors = post.find_all("a")
+      anchor = anchors[1] #0번째 list제외
+      link = anchor['href']
+      #print(anchor['href'])#link만 가져옴
+      company, kind, region = anchor.find_all('span', class_="company")
+      #print(company, kind, region)
+      title = anchor.find('span', class_="title")
+      #print(company.string, kind.string, region.string, title.string)
+
+      job_data = {
+        'company': company.string,
+        'region': region.string,
+        'position': title.string
+      }
+      result.append(job_data) #이렇게 하지 않으면 for문을 돌면서 데이터가 사라짐. 그래서 result라는 빈 list를 만들고 for 문 안에서 append를 통해 계속 추가해주는것
+      
+      #print("//////////////////")
+      #print("//////////////////")
+  for result in result:
+    print(result) #dictionary로 가득찬 list출력!!
+    print("//////////////")
