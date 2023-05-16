@@ -611,3 +611,29 @@ say_hello("nico", 12)
 say_hello(age=12, name="nico")
 
 #soup.find_all에서 class_를 쓰는 이유: class는 이미 파이썬에서 쓰고있는 Keyword이기 때문에 _를 붙여줌
+
+#5.6 Job Posts
+from requests import get
+from bs4 import BeautifulSoup
+
+base_url = "https://weworkremotely.com/remote-jobs/search?term="
+search_term = "python"
+
+response = get(f"{base_url}{search_term}")
+
+if response.status_code != 200:
+  print("Can't request website")
+else:
+  soup = BeautifulSoup(response.text, "html.parser")
+  jobs = soup.find_all('section', class_="jobs")
+  print(len(jobs)) #job이라는 class를 가진 section이 몇개가 있는지 출력
+  #section안의 ul안에 있는 li내용을 받아오고 싶음
+  for job_section in jobs:
+    job_posts = job_section.find_all("li")
+    job_posts.pop(-1) #list의 마지막 항목 제거
+    #print(job_posts)
+    for post in job_posts:
+      print(post)
+      print("/////////////") #seperator
+    #li"view-all" : 버튼, 제외돼도 됨 -> line19
+   
