@@ -580,3 +580,24 @@ if response.status_code != 200:
 #print(response) #확인
 else:
   print(response.text) #HTML코드 출력
+
+
+#5.4 BeautifulSoup
+#원하는 text 찾기 - beautifulsoup사용
+#soup.find_all("title") - title이라는 HTML태그 모두 가져옴
+#soup.find_all("a", class_="sister") - class가 sister인 링크 가져옴
+from requests import get
+from bs4 import BeautifulSoup
+
+base_url = "https://weworkremotely.com/remote-jobs/search?term="
+search_term = "python"
+
+response = get(f"{base_url}{search_term}")
+
+if response.status_code != 200:
+  print("Can't request website")
+else:
+  soup = BeautifulSoup(response.text, "html.parser")
+  jobs = soup.find_all('section', class_="jobs")
+#response.text : html text,
+#"html.parser" : beautifulsoup한테 html을 보내준다고 말해주는거
