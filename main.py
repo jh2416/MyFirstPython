@@ -584,7 +584,8 @@ else:
 
 #5.4 BeautifulSoup
 #원하는 text 찾기 - beautifulsoup사용
-#soup.find_all("title") - title이라는 HTML태그 모두 가져옴
+#find_all : list로 만들어줌
+#soup.find_all("title") - title이라는 HTML태그 모두 가져옴, 
 #soup.find_all("a", class_="sister") - class가 sister인 링크 가져옴
 from requests import get
 from bs4 import BeautifulSoup
