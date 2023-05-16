@@ -1,0 +1,32 @@
+from bs4 import BeautifulSoup
+import requests
+
+def extract_jobs(term):
+  url = f"https://remoteok.com/remote-{term}-jobs"
+  request = requests.get(url, headers={"User-Agent": "Kimchi"})
+  if request.status_code == 200:
+    result = []
+    
+    soup = BeautifulSoup(request.text, "html.parser") 
+    job_tr = soup.find_all('tr', class_="job")
+    #print(job_tr)
+    for job_td in job_tr:
+      company = job_td.find('td', class_="company")
+      #print(company)
+      title = company.find('h2').string
+      url = company.find('a')['href']
+      name = company.find('h3').string
+      
+      job_data ={
+        'title': title,
+        'url': f"https://remoteok.com{url}",
+        'name': name
+      }
+      result.append(job_data)
+    for result in result:
+      print(result)
+  else:
+    print("Can't get jobs.")
+
+    
+extract_jobs("rust")
