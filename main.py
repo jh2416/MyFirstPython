@@ -720,3 +720,52 @@ else:
   for result in result:
     print(result) #dictionary로 가득찬 list출력!!
     print("//////////////")
+
+
+
+#5.9 Recap
+#import
+from requests import get
+from bs4 import BeautifulSoup
+
+#바뀌지 않는 url
+base_url = "https://weworkremotely.com/remote-jobs/search?term="
+#검색어
+search_term = "python"
+
+#두개 합쳐서 전체 url response
+response = get(f"{base_url}{search_term}")
+
+#status code확인
+if response.status_code != 200:
+  print("Can't request website")
+else:
+  result = []
+  soup = BeautifulSoup(response.text, "html.parser")#방금얻은 웹사이트의 코드를 BeautifulSoup에 줘서 python 데이터구조로 이용할 수 있게 함 ex.아래처럼 코드로 검색
+  jobs = soup.find_all('section', class_="jobs") #section태그의 class_="jobs"인 모든걸 찾아
+  for job_section in jobs:
+    job_posts = job_section.find_all("li") #그 안에서 li태그 찾아
+    job_posts.pop(-1) #맨 마지막 li지워 (쓸데없는 내용)
+    for post in job_posts:
+      anchors = post.find_all("a") #그 안에서 a태그 찾아
+      anchor = anchors[1] #첫 번째 a제외
+      link = anchor['href'] #link저장(url부분)
+      #print(anchor['href'])#link만 가져옴
+      company, kind, region = anchor.find_all('span', class_="company") #span태그의 class_="company"인 모든걸 찾아서 list를 얻음(list의 모든 값을 꺼내서 저장)
+      #company = list[0]
+      #kind = list[1] .... 이런식으로 귀찮게 저장할 필요가 없음
+      
+      title = anchor.find('span', class_="title")
+
+      #dictionary만들기
+      job_data = {
+        'link' : link,
+        'company': company.string, #.string: 태그안에 있는 텍스트를 줌(보기에 안좋은 쓸데없는 코드 삭제)
+        'region': region.string,
+        'position': title.string
+      }
+      result.append(job_data) #result라는 list에 하나씩 추가
+      
+  for result in result:
+    print(result) #dictionary로 가득찬 list출력!!
+    print("//////////////")
