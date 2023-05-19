@@ -769,3 +769,16 @@ else:
   for result in result:
     print(result) #dictionary로 가득찬 list출력!!
     print("//////////////")
+
+
+#5.10 Refactor
+#시작하기 전에 wwr.py로 #5.9까지 작성한 코드(weworkremotely에서 직업찾기) 함수로 저장
+#폴더, 파일명 확인!
+from requests import get
+from bs4 import BeautifulSoup
+#기존 스크래퍼랑 다른점은 return값을 받는것, 검색어를 함수의 argument로 작성하기 때문에 코드내에 작성할 필요가 없는것 정도 
+#extractors폴더의 wwr에 있는 함수 extract_jobs를 import 
+from extractors.wwr import extract_wwr_jobs
+
+jobs = extract_wwr_jobs("python")
+print(jobs)# refactoring done
