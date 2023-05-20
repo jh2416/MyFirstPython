@@ -782,3 +782,110 @@ from extractors.wwr import extract_wwr_jobs
 
 jobs = extract_wwr_jobs("python")
 print(jobs)# refactoring done
+
+
+#5.11 Recursive(재귀: 반복되는) (5.12랑 같이보기)
+#폴더, 파일명 확인!
+#from requests import get
+from bs4 import BeautifulSoup
+from extractors.wwr import extract_wwr_jobs
+"""
+base_url = "https://kr.indeed.com/jobs?q="
+search_term = "python"
+
+response = get(f"{base_url}{search_term}")
+
+if response.status_code != 200:
+  print("Can't request page")
+else:
+  print(response.text) #실행하는데 Can't request page나옴 왜지? url복사해서 이동하면 정상작동하는데 지금코드 실행하면 에러남"""
+"""
+indeed에서 bot으로 추정되는 것들은 막고 있습니다.
+( 1:50초까지 작업한 내용들을 실행시키면 403에러 발생으로 실행되지 않습니다. )
+
+니콜라스 선생님도 영상 올리고 난 후 이 사실을 알게 되었고,
+이를 해결하기 위해 다음 강의에서 Selenium을 이용한 우회 방법을 설명하십니다.
+
+그러니 1:50초까지만 강의를 들으시고, 다음 강의 들으신 수강 진행해 주시면 됩니다. 댓글에도 두 강의 이해 하기 쉽게 각 강의마다 수강생 분들이 글을 남겨 두었으니 읽어보실 추천합니다. :)
+
+---
+
+[ 다음 강의랑 연동해서 보면 좋은 코드 ]
+
+soup = BeautifulSoup(browser.page_source, "html.parser")
+job_list = (soup.find("ul", class_="jobsearch-ResultsList"))
+jobs = job_list.find_all('li', recursive=False)
+# print(len(jobs))
+for job in jobs:
+print(job)
+
+---
+"""
+#5.12 Indeed 403 fix (5.11이랑 같이보기)
+
+# indeed.com에서 어떤 페이지를 요청하려면 selenium 을 배워야 할 필요가 있음
+# 5.11강 처럼 진행하면 indeed.com에서 나를 봇으로 판단해서 봇이 아님을 확인하는 페이지로밖에 못 넘어감
+# selenium : 브라우저를 자동화(automate)할 수 있는 프로그램 - 이게 어떻게 해결하는데?
+# -> 구글 크롬 브라우저를 열고 브라우저로 해당 페이지에 방문, 검색까지 자동으로 진행시킴
+
+# selenium사용하려면 replit에 셀레니움 설치, 브라우저 설치가 모두 필요함
+# Files - 점3개 - show hidden files - replit.nix - deps[]안에 pkgs.chromium, pkgs.chromedriver 작성
+
+from requests import get
+#import selenium이거 먼저하고 설치 끝나면 밑에줄 코드로 바꿈
+from selenium import webdriver
+#webdriver : 파이썬에서 브라우저를 시작할 수 있는 방법
+from selenium.webdriver.chrome.options import Options
+
+#옵션 두개는 replit에서 실행하기 위한 코드임 - 무시
+options = Options()
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+
+browser = webdriver.Chrome(options=options)
+
+browser.get("https://kr.indeed.com/jobs?q=python&limit=50") 
+
+#print(browser.page_source) 정상적으로 실행
+
+#5.11로 돌아와서
+"""status_code프로퍼티(property)는
+request라이브러리(https://pypi.org/project/requests/)의
+프로퍼티이므로 더이상 사용 못함
+그래서 200인지 확인하는 If문 로직을 제거하고 진행"""
+soup = BeautifulSoup(browser.page_source, "html.parser")
+job_list = soup.find("ul", class_="jobsearch-ResultsList")
+jobs = job_list.find_all("li", recursive=False)#ul 바로 아래의 li만 원하기 때문에 그 다음것들을 찾지 않을 방법이 필요한데 그게 recursive=False 
+#print(len(jobs))
+
+for job in jobs:
+ print(job)
+ print("//////////")
+ print("//////////")
+# recursive = False => 바로 아래만 찾아줌
+# mosaic zone까지 바로 포함되는 문제점있음 - 5.13강
+
+#보기 쉽게 한번에 코드 정리
+"""
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+options = Options()
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+browser = webdriver.Chrome(options=options)
+
+base_url = "https://kr.indeed.com/jobs"
+search_term = "python"
+
+browser.get(f"{base_url}?q={search_term}")
+soup = BeautifulSoup(browser.page_source, "html.parser")
+job_list = soup.find("ul",class_="jobsearch-ResultsList")
+jobs = job_list.find_all('li', recursive=False)
+print(len(jobs))
+for job in jobs:
+ print(job)
+ print("//////////")
+ print("//////")
+"""
