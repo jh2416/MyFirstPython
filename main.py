@@ -889,3 +889,31 @@ for job in jobs:
  print("//////////")
  print("//////")
 """
+
+
+#5.13 None
+#None: 데이터 타입, 변수 혹은list, dict에도 넣을수 있음 None != False
+# None : Something isn't there
+# False : Something isn't True
+
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+options = Options()
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+browser = webdriver.Chrome(options=options)
+
+browser.get("https://kr.indeed.com/jobs?q=python&limit=50")
+soup = BeautifulSoup(browser.page_source, "html.parser")
+job_list = soup.find("ul",class_="jobsearch-ResultsList")
+jobs = job_list.find_all('li', recursive=False)
+
+for job in jobs:
+  zone = job.find("div", class_="mosaic-zone")
+  if zone == None: #find는 찾은 element 아니면 None을 줌
+    print("job li")
+  else:
+    print("mosaic li")
+    #AttributeError: 'NoneType' object has no attribute 'find_all' -> 검색 결과가 없어서 
