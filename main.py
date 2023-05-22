@@ -929,6 +929,7 @@ options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 browser = webdriver.Chrome(options=options)
 
+results = []
 browser.get("https://kr.indeed.com/jobs?q=python&limit=50")
 soup = BeautifulSoup(browser.page_source, "html.parser")
 job_list = soup.find("ul",class_="jobsearch-ResultsList")
@@ -942,5 +943,15 @@ for job in jobs:
     anchor = job.select_one("h2 a")
     title = anchor['aria-label']
     link = anchor['href']
-    print(title, link)
-    print("/////////\n//////////")
+    company = job.find("span", class_="companyName")
+    location = job.find("div", class_="companyLocation")
+    job_data = {
+      'link' : f"https://kr.indeed.com{link}",
+      'company': company.string, 
+      'location': location.string,
+      'position': title
+    }
+    results.append(job_data)
+    
+for result in results:
+  print(results, "/////////\n//////////")
